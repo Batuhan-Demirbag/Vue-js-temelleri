@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Js</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <style>
+        ul{
+            margin-top: 10px;
+            margin:0px;
+            padding:0;
+            list-style-type: none;
+            width: 300px;
+        }
+        
+        li {
+            padding: 5px 5px;
+            margin-bottom:5px;
+            border-bottom: 1px solid #ccc;
+            text-align: center;
+        }
+        .red{
+            background-color: red;
+        }
+        .green{
+            background-color: green;
+        }
+      
+    </style>
+</head>
+<body>
+    <div id="app">
+        Adet: <input type="text" v-model="cellcount"/>
+        <ul>
+            <li v-for="product in productList" :class="renkfonc(product)" >
+                <span>{{product.title + ' -> ' + product.count}}</span>
+                <button :disabled="product.count==0" @click="fonc(product)">SATILDI</button>
+            </li>
+        </ul>      
+    </div>
+    <script> 
+    new Vue({ 
+        el : "#app",       
+        data : {
+            cellcount: 0,
+            productList : [
+                {
+                    title : "Mac pro",
+                    price: 30000,
+                    count: 0
+                },
+                {
+                    title : "iphone 12",
+                    price: 18000,
+                    count: 107
+                },
+                {
+                    title : "klave",
+                    price: 300,
+                    count: 123
+                }
+
+            ]
+
+        },
+        methods: {
+                fonc(product){
+                    product.count= product.count -this.cellcount
+                },
+                renkfonc(product){
+                return {'green' : product.count>0,  'red' : product.count<=0 }
+            }
+        
+        }
+ 
+        
+    });
+     
+    </script>
+</body>
+</html>

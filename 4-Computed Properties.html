@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Js</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+
+
+    <div id="app">
+        
+        <input type="text" v-model="age">
+        <p>  Javascript:   {{age>=18 ? 'reşit' : 'reşit değil..' }}</p> </p>
+        
+        <p>   Method:      {{ agefonct(34) }}</p> </p>
+        <p>   Computed:    {{ agefonctcomputed }}</p> </p>
+        <p>{{sayi}}</p>
+        <button @click="sayi++"> SAYI ARTTIR</button>
+    </div>
+
+    <script> 
+
+    new Vue({ 
+
+        el : "#app",
+
+            data : {
+                age :0,
+                sayi: 0
+            },
+            
+        methods : {
+           
+            agefonct(v){
+                console.log("method çalıştı");
+                return this.age>=18 ? 'reşit' : 'reşit değil..'
+            }
+
+        }, 
+
+        computed : {
+            agefonctcomputed(v){
+                console.log("computed çalıştı");
+                return this.age>=18 ? 'reşit' : 'reşit değil..'
+            }
+        },
+
+        watch : {
+            age(newValue,oldValue) {
+                console.log("New:" +age)
+                console.log("Old:" +age)
+                
+            }
+        }
+           
+
+    });
+     
+    </script>
+</body>
+</html>
